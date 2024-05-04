@@ -10,19 +10,10 @@
     <!-- /.login-logo -->
     <div class="card">
       <div class="card-body login-card-body">
-        <!-- Display messages from Django messages framework -->
-        {% if messages %}
-          <div class="alert alert-warning" role="alert">
-            {% for message in messages %}
-              {{ message }}
-            {% endfor %}
-          </div>
-        {% endif %}
-
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="input-group mb-3">
-            <input type="name" class="form-control" placeholder="Name" name="name" value="{{ username|default_if_none:'' }}"/>
+            <input type="name" class="form-control" placeholder="Name" name="name" value="{{ username|default_if_none:'' }}" />
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -38,13 +29,19 @@
             </div>
           </div>
           <div class="row">
-            <!-- /.col -->
-            <div class="col-4">
-              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-            </div>
-            <!-- /.col -->
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
           </div>
         </form>
+      </div>
+      <div class="container">
+        <!-- Display messages from Django messages framework -->
+        {% if messages %}
+          <div class="alert alert-danger" role="alert">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+          </div>
+        {% endif %}
       </div>
       <!-- /.login-card-body -->
     </div>

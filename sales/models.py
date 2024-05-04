@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
-class Camera(models.Model):
+class SalesCamera(models.Model):
     CAMERA_TYPES = (
         ('camera', 'Camera'),
         ('equipment', 'Equipment')
@@ -22,3 +22,4 @@ class Camera(models.Model):
 
     def __str__(self):
         return f"{self.brand} {self.model_name} ({self.serial_number})"
+

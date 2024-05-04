@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'customAdmin',
     'sales',
     'rental',
-    'bills'
+    'bills',
+    'rentalBills',
 ]
 
 MIDDLEWARE = [

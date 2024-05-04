@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages  # Import for displaying messages to the user
 
@@ -34,6 +34,11 @@ def adminlogin(request):
 @login_required
 def admindash(request):
     if request.user.is_superuser:
-        return render(request, "admindashboard.html")
+        pagehead = "Dashboard"
+        return render(request, "admindashboard.html",{"pagehead":pagehead})
     else:
         return redirect('adminlogin') 
+    
+def adminlogout(request):
+    logout(request)
+    return redirect('login')

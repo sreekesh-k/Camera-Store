@@ -4,6 +4,16 @@
 {% endblock %}
 {% block content %}
   <div class="container-fluid">
+    <div class="container">
+      <!-- Display messages from Django messages framework -->
+      {% if messages %}
+        <div class="alert alert-danger" role="alert">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
     <div class="row">
       <!-- left column -->
       <div class="col-md-12">
@@ -14,7 +24,7 @@
           </div>
           <!-- /.card-header -->
           <!-- form start -->
-          <form id="quickForm">
+          <form id="quickForm" method="post" enctype="multipart/form-datax">
             <div class="card-body">
               {% csrf_token %}
               <div class="form-group">

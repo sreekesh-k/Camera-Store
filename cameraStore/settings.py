@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Set the MEDIA_ROOT to a directory named 'media' in your project directory
+MEDIA_ROOT = ''
+
+# Set the MEDIA_URL to '/media/' so that uploaded files are served from this URL
+MEDIA_URL = 'images/'
 
 
 # Quick-start development settings - unsuitable for production

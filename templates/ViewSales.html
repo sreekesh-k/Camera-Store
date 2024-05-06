@@ -24,10 +24,10 @@
           <td>{{ stock.model_name }}</td>
           <td>{{ stock.MRP }}</td>
           <td>
-            <a href="#"><i class="fas fa-edit"></i></a>
+            <a href="{% url 'editSales' stock.id %}"><i class="fas fa-edit"></i></a>
           </td>
           <td>
-            <a href="#"><i class="fas fa-trash-alt"></i></a>
+            <a href="{% url 'deleteSales' stock.id %}"><i class="fas fa-trash-alt"></i></a>
           </td>
         </tr>
       {% endfor %}

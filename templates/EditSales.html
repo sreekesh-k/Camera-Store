@@ -1,0 +1,92 @@
+{% extends 'pageLayouts.html' %}
+{% block title %}
+  EditSaleStock
+{% endblock %}
+{% block content %}
+  <div class="container-fluid">
+    <div class="container">
+      <!-- Display messages from Django messages framework -->
+      {% if messages %}
+        <div class="alert alert-danger" role="alert">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- jquery validation -->
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Sales <small>Edit stock</small></h3>
+          </div>
+          <!-- /.card-header -->
+          <!-- form start -->
+          <form id="quickForm" method="post" enctype="multipart/form-datax">
+            <div class="card-body">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="serial_number">Serial Number:</label>
+                <input type="text" class="form-control" id="serial_number" name="serial_number" value="{{ stock.serial_number }}" />
+              </div>
+              <div class="form-group">
+                <label for="brand">Brand:</label>
+                <input type="text" class="form-control" id="brand" name="brand" value="{{ stock.brand }}" />
+              </div>
+              <div class="form-group">
+                <label for="model_name">Model Name:</label>
+                <input type="text" class="form-control" id="model_name" name="model_name" value="{{ stock.model_name }}" />
+              </div>
+              <div class="form-group">
+                <label for="model_number">Model Number:</label>
+                <input type="text" class="form-control" id="model_number" name="model_number" value="{{ stock.model_number }}" />
+              </div>
+              <div class="form-group">
+                <label for="specifications">Specifications:</label>
+                <textarea class="form-control" id="specifications" name="specifications" rows="3">{{ stock.specifications }}</textarea>
+              </div>
+              <div class="form-group">
+                <label for="purchase_price">Purchase Price:</label>
+                <input type="number" class="form-control" id="purchase_price" name="purchase_price" step="0.01" value="{{ stock.purchase_price }}" />
+              </div>
+              <div class="form-group">
+                <label for="photo">
+                  <img src="{{ stock.photo.url }}" alt="" />
+                  <br />Change Photo:
+                </label>
+                <input type="file" class="form-control-file" id="photo" name="photo"/>
+              </div>
+              <div class="form-group">
+                <label for="MRP">MRP:</label>
+                <input type="number" class="form-control" id="MRP" name="MRP" step="0.01" value="{{ stock.MRP }}" />
+              </div>
+              <div class="form-group">
+                <label for="purchased_date">Purchased Date: {{ stock.purchased_date }}</label>
+                <input type="date" class="form-control" id="purchased_date" name="purchased_date" />
+              </div>
+              <div class="form-group">
+                <label for="type">Type:</label>
+                <select class="form-control" id="type" name="type">
+                  <option value="camera">Camera</option>
+                  <option value="equipment">Equipment</option>
+                </select>
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col (left) -->
+      <!-- right column -->
+      <div class="col-md-6"></div>
+      <!-- /.col (right) -->
+    </div>
+    <!-- /.row -->
+  </div>
+{% endblock %}

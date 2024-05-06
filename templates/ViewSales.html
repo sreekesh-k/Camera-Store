@@ -1,3 +1,36 @@
-{% extends "pageLayouts.html" %}
-{% block title %}ViewSales{% endblock title %}
-{% block content %}{% endblock content %}
+{% extends 'pageLayouts.html' %}
+{% block title %}
+  Sales
+{% endblock %}
+{% block content %}
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Photo</th>
+        <th>Brand</th>
+        <th>ModelName</th>
+        <th>MRP</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stock in stocks %}
+        <tr data-widget="expandable-table" aria-expanded="false">
+          <td>{{ stock.id }}</td>
+          <td>{{ stock.photo }}</td>
+          <td>{{ stock.brand }}</td>
+          <td>{{ stock.ModelName }}</td>
+          <td>{{ stock.MRP }}</td>
+          <td>
+            <a href="#"><i class="fas fa-edit"></i></a>
+          </td>
+          <td>
+            <a href="#"><i class="fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

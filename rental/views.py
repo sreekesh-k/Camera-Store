@@ -39,11 +39,11 @@ def editRentals(request, pk):
         stockToEdit.model_number = model_number
         stockToEdit.specifications = specifications
         stockToEdit.charge_per_day = charge_per_day
-        if photo:
+        if photo is not None: 
             stockToEdit.photo = photo
         stockToEdit.save()
         messages.success(request, 'Rental data updated successfully!')
-        return redirect('view_rentals')
+        return redirect('viewRentals')
 
     pagehead = "Edit Rental"
     return render(request, "EditRentals.html", {"stock": stockToEdit, "pagehead": pagehead})

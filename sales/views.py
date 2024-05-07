@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from . models import SalesCamera 
-from datetime import datetime
 from django.contrib import messages
 # Create your views here.
 def viewSales(request):
@@ -55,12 +54,15 @@ def editSales(request,pk):
         stockToEdit.model_number=model_number
         stockToEdit.specifications=specifications
         stockToEdit.purchase_price=purchase_price
-        if photo:
+        if photo is not None:
             stockToEdit.photo = photo
         stockToEdit.MRP=MRp
         stockToEdit.purchased_date=purchased_date
         stockToEdit.type=type
         stockToEdit.save()
+        messages.success(request, 'Rental data updated successfully!')
+        return redirect('viewSales')
+    
     pagehead = "Edit Stock"
     return render(request, "EditSales.html", {"stock":stockToEdit,"pagehead": pagehead})
 

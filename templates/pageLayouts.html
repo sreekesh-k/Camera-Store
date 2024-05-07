@@ -157,9 +157,33 @@
                     </ul>
                   </li>
                 </ul>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                      <a href="#" class="nav-link">
+                          <i class="nav-icon far fa-circle"></i>
+                          <p>Rentals</p>
+                          <i class="right fas fa-angle-left"></i>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{% url 'addRentals' %}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-info"></i>
+                                  <p>Add Rentals</p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{% url 'viewRentals' %}" class="nav-link">
+                                  <i class="nav-icon far fa-circle text-warning"></i>
+                                  <p>View Rentals</p>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
               </li>
             </ul>
           </nav>
+          
           <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->

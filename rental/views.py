@@ -22,7 +22,7 @@ def addRentals(request):
         new_stock.save()
         messages.success(request, 'Rental data added successfully!')
 
-    pagehead = "Add Rentals"
+    pagehead = "Rentals / Add Rentals"
     return render(request, "addRentals.html", {"pagehead": pagehead})
 
 def editRentals(request, pk):
@@ -45,7 +45,7 @@ def editRentals(request, pk):
         messages.success(request, 'Rental data updated successfully!')
         return redirect('viewRentals')
 
-    pagehead = "Edit Rental"
+    pagehead = "Rentals / Edit Rental"
     return render(request, "EditRentals.html", {"stock": stockToEdit, "pagehead": pagehead})
 
 def deleteRentals(request, pk):

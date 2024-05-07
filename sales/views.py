@@ -32,7 +32,7 @@ def addSales(request):
 
 
     # Render the form template for GET requests
-    pagehead = "Add Sales"
+    pagehead = "Sales / Add Sales"
     return render(request, "addSales.html", {"pagehead": pagehead})
 
 def editSales(request,pk):
@@ -63,7 +63,7 @@ def editSales(request,pk):
         messages.success(request, 'Rental data updated successfully!')
         return redirect('viewSales')
     
-    pagehead = "Edit Stock"
+    pagehead = "Sales / Edit Stock"
     return render(request, "EditSales.html", {"stock":stockToEdit,"pagehead": pagehead})
 
 def deleteSales(request,pk):

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
       {% block title %}
-      
+
       {% endblock %}
     </title>
 
@@ -134,53 +134,22 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{% url 'viewSales' %}" class="nav-link">
                       <i class="nav-icon far fa-circle"></i>
                       <p>Sales</p>
-                      <i class="right fas fa-angle-left"></i>
                     </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{% url 'addSales' %}" class="nav-link">
-                          <i class="nav-icon far fa-circle text-info"></i>
-                          <p>Add Sales</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{% url 'viewSales' %}" class="nav-link">
-                          <i class="nav-icon far fa-circle text-warning"></i>
-                          <p>View Sales</p>
-                        </a>
-                      </li>
-                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{% url 'viewRentals' %}" class="nav-link">
+                      <i class="nav-icon far fa-circle"></i>
+                      <p>Rentals</p>
+                    </a>
                   </li>
                 </ul>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                      <a href="#" class="nav-link">
-                          <i class="nav-icon far fa-circle"></i>
-                          <p>Rentals</p>
-                          <i class="right fas fa-angle-left"></i>
-                      </a>
-                      <ul class="nav nav-treeview">
-                          <li class="nav-item">
-                              <a href="{% url 'addRentals' %}" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-info"></i>
-                                  <p>Add Rentals</p>
-                              </a>
-                          </li>
-                          <li class="nav-item">
-                              <a href="{% url 'viewRentals' %}" class="nav-link">
-                                  <i class="nav-icon far fa-circle text-warning"></i>
-                                  <p>View Rentals</p>
-                              </a>
-                          </li>
-                      </ul>
-                  </li>
-              </ul>
+              </li>
             </ul>
           </nav>
-          
+
           <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
@@ -191,8 +160,16 @@
           <div class="container-fluid">
             <div class="row mb-2">
               <div class="col-sm-6">
-                <h1>{{ pagehead }}</h1>
+                <h1>
+                  {{ pagehead }}
+                  {% if pagehead == 'Sales' %}
+                    <a href="{% url 'addSales' %}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                  {% elif pagehead == 'Rentals' %}
+                    <a href="{% url 'addRentals' %}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                  {% endif %}
+                </h1>
               </div>
+
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                   <li class="breadcrumb-item">Home</li>

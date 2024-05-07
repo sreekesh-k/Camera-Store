@@ -1,0 +1,36 @@
+{% extends 'pageLayouts.html' %}
+{% block title %}
+  Rentals
+{% endblock %}
+{% block content %}
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Photo</th>
+        <th>Brand</th>
+        <th>ModelName</th>
+        <th>Charge Per Day</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stock in stocks %}
+        <tr data-widget="expandable-table" aria-expanded="false">
+          <td>{{ stock.id }}</td>
+          <td><img src="{{ stock.photo.url }}" alt=""></td>
+          <td>{{ stock.brand }}</td>
+          <td>{{ stock.model_name }}</td>
+          <td>{{ stock.charge_per_day }}</td>
+          <td>
+            <a href="{% url 'editRentals' stock.id %}"><i class="fas fa-edit"></i></a>
+          </td>
+          <td>
+            <a href="{% url 'deleteRentals' stock.id %}"><i class="fas fa-trash-alt"></i></a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

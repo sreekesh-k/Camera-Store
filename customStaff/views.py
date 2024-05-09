@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
 
+from django.contrib import messages
+
 def login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
@@ -17,7 +19,7 @@ def login(request):
                 return redirect('staffdashboard')
             else:
                 # Authentication failed, display error message
-                form.add_error(None, "Invalid email or password.")
+                messages.error(request, "Invalid email or password.")
     else:
         form = UserLoginForm()
     return render(request, 'login.html', {'form': form})

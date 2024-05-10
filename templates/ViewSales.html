@@ -19,7 +19,7 @@
       {% for stock in stocks %}
         <tr data-widget="expandable-table" aria-expanded="false" class="{% if stock.isAvailable %}{% else %}bg-secondary{% endif %}">
           <td>{{ stock.id }}</td>
-          <td><img src="{{ stock.photo.url }}" alt="">{% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}</td>
+          <td><img src="{{ stock.photo.url }}" alt="" height="110" width="155">{% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}</td>
           <td>{{ stock.brand }}</td>
           <td><a href="{% url 'saleDetail' stock.id %}">{{ stock.model_name }}</a></td>
           <td>{{ stock.MRP }}</td>

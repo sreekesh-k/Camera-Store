@@ -1,0 +1,51 @@
+{% extends 'pageLayouts.html' %}
+{% block title %}
+  SalesDetails
+{% endblock %}
+{% block content %}
+  <div class="card card-solid">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <h3 class="d-inline-block d-sm-none">{{ stock.serial_number }}</h3>
+          <div class="col-12">
+            <img src="{{ stock.photo.url }}" class="product-image" alt="Product Image" />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3 class="my-3">{{ stock.brand }} {{ stock.model_name }}</h3>
+          <p>{{ stock.specifications }}</p>
+
+          <hr />
+          {% if stock.isAvailable %}
+            <button type="button" class="btn btn-success">AVAILABLE</button>
+          {% else %}
+          <button type="button" class="btn btn-danger">OUT OF STOCK</button>
+          {% endif %}
+
+          <div class="bg-gray py-2 px-3 mt-4">
+            <h2 class="mb-0">Purchased at: {{ stock.purchase_price }}</h2>
+            <h4 class="mt-0"><small>MRP: {{ stock.MRP }}</small></h4>
+          </div>
+
+          {% if stock.isAvailable %}
+            <div class="mt-4">
+              <div class="btn btn-primary btn-lg btn-flat">
+                <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                Place Order
+              </div>
+            </div>
+          {% else %}
+            <div class="mt-4">
+              <div class="btn btn-danger btn-lg btn-flat">
+                <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                Cannot Place Order
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+{% endblock %}

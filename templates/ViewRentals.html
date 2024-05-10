@@ -17,12 +17,13 @@
     </thead>
     <tbody>
       {% for stock in stocks %}
-        <tr data-widget="expandable-table" aria-expanded="false">
+        <tr data-widget="expandable-table" aria-expanded="false" class="{% if stock.isAvailable %}{% else %}bg-secondary{% endif %}">
           <td>{{ stock.id }}</td>
-          <td><img src="{{ stock.photo.url }}" alt=""></td>
+          <td><img src="{{ stock.photo.url }}" alt="">  {% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}</td>
           <td>{{ stock.brand }}</td>
           <td>{{ stock.model_name }}</td>
           <td>{{ stock.charge_per_day }}</td>
+          {% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}
           <td>
             <a href="{% url 'editRentals' stock.id %}"><i class="fas fa-edit"></i></a>
           </td>

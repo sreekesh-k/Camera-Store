@@ -14,6 +14,7 @@ class SalesCamera(models.Model):
     specifications = models.TextField()
     purchase_price = models.DecimalField(max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='images/')
+    isAvailable =models.BooleanField(default=True)
     MRP = models.DecimalField(max_digits=10, decimal_places=2)
     purchased_date = models.DateField()
     type = models.CharField(max_length=50, choices=CAMERA_TYPES)

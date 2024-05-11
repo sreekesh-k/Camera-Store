@@ -21,7 +21,7 @@
           <td>{{ stock.id }}</td>
           <td><img src="{{ stock.photo.url }}" alt="">  {% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}</td>
           <td>{{ stock.brand }}</td>
-          <td>{{ stock.model_name }}</td>
+          <td><a href="{% url 'rentalDetail' stock.id %}">{{ stock.model_name }}</a></td>
           <td>{{ stock.charge_per_day }}</td>
           {% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}
           <td>

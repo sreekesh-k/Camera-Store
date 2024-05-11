@@ -55,3 +55,8 @@ def deleteRentals(request, pk):
     pagehead = "Rentals"
     objects = RentCamera.objects.all()
     return render(request, "viewRentals.html", {"stocks": objects, "pagehead": pagehead})
+
+def rentalDetail(request,pk):
+    itemToDisplay = RentCamera.objects.get(pk=pk)
+    pagehead = "Rentals / Details"
+    return render(request,"rentalStockDetail.html",{"stock":itemToDisplay,"pagehead":pagehead})

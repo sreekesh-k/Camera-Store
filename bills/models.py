@@ -6,6 +6,9 @@ from sales.models import SalesCamera
 class SalesBilling(models.Model):
     camera = models.ForeignKey(SalesCamera, on_delete=models.CASCADE)
     customer_name = models.CharField(max_length=100)
+    customer_phno = models.CharField(max_length=10, default='')
+    customer_address = models.TextField(null=True)
+    customer_email = models.EmailField(unique=True,null=True)    
     sales_price = models.DecimalField(max_digits=10, decimal_places=2)
     sales_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)

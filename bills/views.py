@@ -12,6 +12,6 @@ def customer(request,pk):
                                             customer_address=customer_address,customer_email=customer_email
                                             )
     
-    
+
     pagehead = "CustomerDetails"
     return render(request,"CustomerDetails.html",{"stock":itemToDisplay,"pagehead":pagehead})

@@ -10,7 +10,7 @@ class SalesBilling(models.Model):
     customer_address = models.TextField(null=True)
     customer_email = models.EmailField(unique=True,null=True)    
     sales_price = models.DecimalField(max_digits=10, decimal_places=2)
-    sales_date = models.DateField()
+    sales_date = models.DateField(auto_now_add=True)
     created_at = models.DateTimeField(auto_now_add=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
 

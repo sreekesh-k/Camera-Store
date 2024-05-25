@@ -25,5 +25,5 @@ urlpatterns = [
     path('sales/',include("sales.urls")),
     path('rental/',include("rental.urls")),
     path('customStaff/',include("customStaff.urls")),
-    path('customer/',include("bills.urls"))
+    path('customerSales/',include("bills.urls")),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

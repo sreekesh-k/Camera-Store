@@ -21,3 +21,16 @@ def customer(request,pk):
     itemToDisplay = SalesCamera.objects.get(pk=pk)
     pagehead = "CustomerDetails"
     return render(request,"CustomerDetails.html",{"stock":itemToDisplay,"pagehead":pagehead})
+
+def viewSalesBills(request):
+    pagehead = "SalesBills"
+    object = SalesBilling.objects.all()
+    return render(request,"SalesBills.html",{"bills":object,"pagehead":pagehead})
+
+def deleteSalesBills(request,pk):
+    itemToDelete = SalesBilling.objects.get(pk=pk)
+    camera = itemToDelete.camera
+    camera.isAvailable=1
+    camera.save()
+    itemToDelete.delete()
+    return redirect('viewSalesBills')

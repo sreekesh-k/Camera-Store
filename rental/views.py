@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import RentCamera
 from django.contrib import messages
-
+#final
 def viewRentals(request):
     pagehead = "Rentals"
     objects = RentCamera.objects.all()

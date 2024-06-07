@@ -1,4 +1,4 @@
-![image](https://github.com/sreekesh-k/Camera-Store/assets/145774649/d61567e7-05e9-425f-bff7-3678246354cd)Camera store management system with python django - Custom Admin
+Camera store management system with python django - Custom Admin
 
 # SCREENSHOTS:
 

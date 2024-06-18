@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'rental',
     'bills',
     'rentalBills',
-    'customStaff',
 ]
 
 MIDDLEWARE = [

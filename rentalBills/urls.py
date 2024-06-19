@@ -4,4 +4,5 @@ urlpatterns = [
     path('CustomerRentals/<pk>', views.rentcustomer,name="rentcustomer"),
     path('Rentalbills', views.viewRentalBills,name="viewRentalBills"),
     path('Rentalbills/<pk>', views.deleteRentalBills,name="deleteRentalBills"),
+    path('Rentalbill', views.createRentalBills,name="createRentalBills"),
 ]

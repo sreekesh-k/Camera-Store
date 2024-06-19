@@ -27,6 +27,11 @@ def viewSalesBills(request):
     object = SalesBilling.objects.all()
     return render(request,"SalesBills.html",{"bills":object,"pagehead":pagehead})
 
+def createSalesBills(request):
+    pagehead = "createSalesBills"
+    return render(request,"createSalesBills.html",{"pagehead":pagehead})
+
+
 def deleteSalesBills(request,pk):
     itemToDelete = SalesBilling.objects.get(pk=pk)
     camera = itemToDelete.camera

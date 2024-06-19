@@ -31,6 +31,10 @@ def viewRentalBills(request):
     object = RentalBilling.objects.all()
     return render(request, "rentalbills.html", {"bills": object, "pagehead": pagehead})
 
+def createRentalBills(request):
+    pagehead = "createRentalBills"
+    return render(request,"createRentalBills.html",{"pagehead":pagehead})
+
 def deleteRentalBills(request, pk):
     itemToDelete = RentalBilling.objects.get(pk=pk)
     camera = itemToDelete.camera

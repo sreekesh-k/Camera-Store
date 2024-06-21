@@ -28,7 +28,7 @@ def viewSalesBills(request):
     return render(request,"SalesBills.html",{"bills":object,"pagehead":pagehead})
 
 def createSalesBills(request):
-    pagehead = "createSalesBills"
+    pagehead = "Create Sales Bills"
     return render(request,"createSalesBills.html",{"pagehead":pagehead})
 
 

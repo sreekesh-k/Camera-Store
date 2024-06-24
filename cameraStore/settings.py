@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'cameraStore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#postgres
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',

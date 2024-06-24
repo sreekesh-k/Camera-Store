@@ -6,4 +6,5 @@ urlpatterns = [
     path('bills', views.viewSalesBills,name="viewSalesBills"),
     path('bills/<pk>', views.deleteSalesBills,name="deleteSalesBills"),
     path('salebills', views.createSalesBills,name="createSalesBills"),
+    path('cameralist',views.cameraList,name="cameralist")
 ]

@@ -32,7 +32,7 @@ def viewRentalBills(request):
     return render(request, "rentalbills.html", {"bills": object, "pagehead": pagehead})
 
 def createRentalBills(request):
-    pagehead = "createRentalBills"
+    pagehead = "Create Rental Bills"
     return render(request,"createRentalBills.html",{"pagehead":pagehead})
 
 def deleteRentalBills(request, pk):

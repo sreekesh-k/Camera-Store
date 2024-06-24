@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from sales.models import SalesCamera 
 from . models import SalesBilling
 from django.contrib import messages
+from django.http import JsonResponse
 # Create your views here.
 def customer(request,pk):
     if request.method == 'POST':
@@ -39,3 +40,7 @@ def deleteSalesBills(request,pk):
     camera.save()
     itemToDelete.delete()
     return redirect('viewSalesBills')
+
+def cameraList():
+    cameras = list(SalesCamera.objects.values_list('model_name',flat=True))
+    return JsonResponse(cameras,safe=False)

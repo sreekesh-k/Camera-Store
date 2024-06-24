@@ -29,7 +29,7 @@ def rentcustomer(request, pk):
 def viewRentalBills(request):
     pagehead = "Rentalbills"
     object = RentalBilling.objects.all()
-    return render(request, "rentalbills.html", {"bills": object, "pagehead": pagehead})
+    return render(request, "rentalBills.html", {"bills": object, "pagehead": pagehead})
 
 def createRentalBills(request):
     pagehead = "Create Rental Bills"

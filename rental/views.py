@@ -54,7 +54,7 @@ def deleteRentals(request, pk):
     messages.success(request, 'Rental data deleted successfully!')
     pagehead = "Rentals"
     objects = RentCamera.objects.all()
-    return render(request, "viewRentals.html", {"stocks": objects, "pagehead": pagehead})
+    return render(request, "ViewRentals.html", {"stocks": objects, "pagehead": pagehead})
 
 def rentalDetail(request,pk):
     itemToDisplay = RentCamera.objects.get(pk=pk)

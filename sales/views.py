@@ -5,7 +5,7 @@ from django.contrib import messages
 def viewSales(request):
     pagehead = "Sales"
     object = SalesCamera.objects.all()
-    return render(request,"viewSales.html",{"stocks":object,"pagehead":pagehead})
+    return render(request,"ViewSales.html",{"stocks":object,"pagehead":pagehead})
 
 
 def addSales(request):

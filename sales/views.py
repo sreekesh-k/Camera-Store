@@ -71,7 +71,7 @@ def deleteSales(request,pk):
     itemToDelete.delete()
     pagehead = "Sales"
     object = SalesCamera.objects.all()
-    return render(request,"viewSales.html",{"stocks":object,"pagehead":pagehead})
+    return render(request,"ViewSales.html",{"stocks":object,"pagehead":pagehead})
 
 def saleDetail(request,pk):
     itemToDisplay = SalesCamera.objects.get(pk=pk)

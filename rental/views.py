@@ -5,7 +5,7 @@ from django.contrib import messages
 def viewRentals(request):
     pagehead = "Rentals"
     objects = RentCamera.objects.all()
-    return render(request, "viewRentals.html", {"stocks": objects, "pagehead": pagehead})
+    return render(request, "ViewRentals.html", {"stocks": objects, "pagehead": pagehead})
 
 def addRentals(request):
     if request.method == 'POST':

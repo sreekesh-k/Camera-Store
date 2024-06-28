@@ -1,11 +1,37 @@
 from django.shortcuts import redirect, render
+from django.http import JsonResponse
 from . models import SalesCamera 
 from django.contrib import messages
+from django.db.models import Q
 # Create your views here.
+
+def search_suggestions(request):
+    query = request.GET.get('term', '')
+    suggestions = []
+    
+    if query:
+        cameras = SalesCamera.objects.filter(
+            Q(brand__icontains=query) | 
+            Q(model_name__icontains=query)
+        )[:10]  # Limit the number of suggestions
+    
+        suggestions = [{'id': cam.id, 'label': f"{cam.brand} {cam.model_name}", 'model': cam.model_name} for cam in cameras]
+    
+    return JsonResponse(suggestions, safe=False)
+
 def viewSales(request):
-    pagehead = "Sales"
-    object = SalesCamera.objects.all()
-    return render(request,"viewSales.html",{"stocks":object,"pagehead":pagehead})
+    page_head = "Sales"
+    query = request.GET.get('search')
+    
+    if query:
+        stocks = SalesCamera.objects.filter(
+            Q(brand__icontains=query) | 
+            Q(model_name__icontains=query)
+        )
+    else:
+        stocks = SalesCamera.objects.all()
+        
+    return render(request, "ViewSales.html", {"stocks": stocks, "pagehead": page_head})
 
 
 def addSales(request):

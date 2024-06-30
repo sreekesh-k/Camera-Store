@@ -32,7 +32,7 @@ def adminlogin(request):
 def admindash(request):
     if request.user.is_superuser:
         pagehead = "Dashboard"
-        return render(request, "admindashboard.html",{"pagehead":pagehead})
+        return render(request, "admin/admindashboard.html",{"pagehead":pagehead})
     else:
         return redirect('adminlogin') 
     

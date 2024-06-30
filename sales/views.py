@@ -19,7 +19,7 @@ def search_suggestions(request):
     
     return JsonResponse(suggestions, safe=False)
 
-def viewSales(request):
+def viewStocks(request):
     page_head = "Sales"
     query = request.GET.get('search')
     
@@ -31,10 +31,10 @@ def viewSales(request):
     else:
         stocks = SalesCamera.objects.all()
         
-    return render(request, "ViewSales.html", {"stocks": stocks, "pagehead": page_head})
+    return render(request, "sales/stock/viewstocks.html", {"stocks": stocks, "pagehead": page_head})
 
 
-def addSales(request):
+def addStock(request):
     if request.method == 'POST':
         # Extract form data from POST request
         serial_number = request.POST.get("serial_number")
@@ -59,9 +59,9 @@ def addSales(request):
 
     # Render the form template for GET requests
     pagehead = "Sales / Add Sales"
-    return render(request, "addSales.html", {"pagehead": pagehead})
+    return render(request, "sales/stock/addstock.html", {"pagehead": pagehead})
 
-def editSales(request,pk):
+def editStock(request,pk):
     stockToEdit = SalesCamera.objects.get(pk=pk)
     if request.method == 'POST':
         serial_number = request.POST.get("serial_number")
@@ -90,16 +90,16 @@ def editSales(request,pk):
         return redirect('viewSales')
     
     pagehead = "Sales / Edit Stock"
-    return render(request, "EditSales.html", {"stock":stockToEdit,"pagehead": pagehead})
+    return render(request, "sales/stock/editstock.html", {"stock":stockToEdit,"pagehead": pagehead})
 
-def deleteSales(request,pk):
+def deleteStock(request,pk):
     itemToDelete = SalesCamera.objects.get(pk=pk)
     itemToDelete.delete()
     pagehead = "Sales"
     object = SalesCamera.objects.all()
-    return render(request,"viewSales.html",{"stocks":object,"pagehead":pagehead})
+    return render(request,"sales/stock/viewstock.html",{"stocks":object,"pagehead":pagehead})
 
-def saleDetail(request,pk):
+def stockDetails(request,pk):
     itemToDisplay = SalesCamera.objects.get(pk=pk)
     pagehead = "Sales / Details"
-    return render(request,"saleStockDetail.html",{"stock":itemToDisplay,"pagehead":pagehead})
+    return render(request,"sales/stock/stockdetails.html",{"stock":itemToDisplay,"pagehead":pagehead})

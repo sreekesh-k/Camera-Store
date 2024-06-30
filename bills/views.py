@@ -21,16 +21,16 @@ def customer(request,pk):
         itemToDisplay.save()
     itemToDisplay = SalesCamera.objects.get(pk=pk)
     pagehead = "CustomerDetails"
-    return render(request,"CustomerDetails.html",{"stock":itemToDisplay,"pagehead":pagehead})
+    return render(request,"sales/bills/customerDetails.html",{"stock":itemToDisplay,"pagehead":pagehead})
 
 def viewSalesBills(request):
     pagehead = "SalesBills"
     object = SalesBilling.objects.all()
-    return render(request,"SalesBills.html",{"bills":object,"pagehead":pagehead})
+    return render(request,"sales/bills/viewbills.html",{"bills":object,"pagehead":pagehead})
 
 def createSalesBills(request):
     pagehead = "Create Sales Bills"
-    return render(request,"createSalesBills.html",{"pagehead":pagehead})
+    return render(request,"sales/bills/createbill.html",{"pagehead":pagehead})
 
 
 def deleteSalesBills(request,pk):
@@ -40,7 +40,3 @@ def deleteSalesBills(request,pk):
     camera.save()
     itemToDelete.delete()
     return redirect('viewSalesBills')
-
-def cameraList():
-    cameras = list(SalesCamera.objects.values_list('model_name',flat=True))
-    return JsonResponse(cameras,safe=False)

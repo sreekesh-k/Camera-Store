@@ -134,7 +134,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{% url 'viewSales' %}" class="nav-link">
+                    <a href="{% url 'viewSalesStocks' %}" class="nav-link">
                       <i class="nav-icon far fa-circle"></i>
                       <p>Sales</p>
                     </a>
@@ -208,9 +208,9 @@
                 <h1>
                   {{ pagehead }}
                   {% if pagehead == 'Sales' %}
-                    <a href="{% url 'addSales' %}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                    <a href="{% url 'addSalesStock' %}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
                   {% elif pagehead == 'Rentals' %}
-                    <a href="{% url 'addRentals' %}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
+                    <a href="{% url 'addRentalsStock' %}" class="btn btn-success btn-sm"><i class="fas fa-plus"></i></a>
                   {% endif %}
                 </h1>
               </div>

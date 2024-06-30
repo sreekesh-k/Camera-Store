@@ -1,8 +1,8 @@
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('CustomerRentals/<pk>', views.rentcustomer,name="rentcustomer"),
+    path('customerDetails/<pk>', views.rentcustomer,name="rentcustomer"),
     path('Rentalbills', views.viewRentalBills,name="viewRentalBills"),
-    path('Rentalbills/<pk>', views.deleteRentalBills,name="deleteRentalBills"),
+    path('Rentalbills/<pk>', views.deleteRentalBill,name="deleteRentalBill"),
     path('Rentalbill', views.createRentalBills,name="createRentalBills"),
 ]

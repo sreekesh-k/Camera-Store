@@ -24,18 +24,18 @@ def rentcustomer(request, pk):
     
     itemToDisplay = RentCamera.objects.get(pk=pk)
     pagehead = "CustomerRentals"
-    return render(request, "CustomerRentalDetails.html", {"stock": itemToDisplay, "pagehead": pagehead})
+    return render(request, "rental/bills/customerDetails.html", {"stock": itemToDisplay, "pagehead": pagehead})
 
 def viewRentalBills(request):
     pagehead = "Rentalbills"
     object = RentalBilling.objects.all()
-    return render(request, "rentalBills.html", {"bills": object, "pagehead": pagehead})
+    return render(request, "rental/bills/viewbills.html", {"bills": object, "pagehead": pagehead})
 
 def createRentalBills(request):
     pagehead = "Create Rental Bills"
-    return render(request,"createRentalBills.html",{"pagehead":pagehead})
+    return render(request,"rental/bills/createbill.html",{"pagehead":pagehead})
 
-def deleteRentalBills(request, pk):
+def deleteRentalBill(request, pk):
     itemToDelete = RentalBilling.objects.get(pk=pk)
     camera = itemToDelete.camera
     camera.isAvailable = 1

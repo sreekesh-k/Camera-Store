@@ -1,4 +1,4 @@
-{% extends 'pageLayouts.html' %}
+{% extends 'layouts/mainLayout.html' %}
 {% block title %}
   CustomerDetails
 {% endblock %}
@@ -46,7 +46,7 @@
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <a href="#" class="btn btn-secondary">Cancel</a>
+              <a href="{% url 'rentalStockDetails' stock.id %}" class="btn btn-secondary">Cancel</a>
               <button type="submit" class="btn btn-success float-right">Proceed</button>
             </div>
           </form>

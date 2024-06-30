@@ -11,9 +11,7 @@ SalesBills
         <th>Photo</th>
         <th>Brand</th>
         <th>ModelName</th>
-        <th>MRP</th>
-        <th>Sold To</th>
-        <th>On Date</th>
+        <th>Rented To</th>
         <th>Remove</th>
       </tr>
     </thead>
@@ -26,18 +24,16 @@ SalesBills
         </td>
         <td>{{ bill.camera.brand }}</td>
         <td>
-          <a href="{% url 'saleDetail' bill.camera.id %}">{{ bill.camera.model_name }}</a>
+          <a href="{% url 'rentalStockDetails' bill.camera.id %}">{{ bill.camera.model_name }}</a>
         </td>
-        <td>{{ bill.camera.MRP }}</td>
         <td>
           {{ bill.customer_name }}
           <br />Ph No:{{ bill.customer_phno }}
         </td>
-        <td>{{ bill.sales_date }}</td>
         <td>
-          <a href="{% url 'deleteSalesBills' bill.id %}"><i class="fas fa-trash-alt"></i></a>
+          <a href="{% url 'deleteRentalBill' bill.id %}"><i class="fas fa-trash-alt"></i></a>
         </td>
-      </tr>
+      </tr>s
       {% endfor %}
     </tbody>
   </table>

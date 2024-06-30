@@ -1,0 +1,40 @@
+{% extends 'layouts/mainLayout.html' %}
+{% block title %}
+Rentals
+{% endblock %}
+{% block content %}
+<div class="container">
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Photo</th>
+        <th>Brand</th>
+        <th>ModelName</th>
+        <th>Charge Per Day</th>
+        <th>Edit</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stock in stocks %}
+      <tr data-widget="expandable-table" aria-expanded="false"
+        class="{% if stock.isAvailable %}{% else %}bg-secondary{% endif %}">
+        <td>{{ stock.id }}</td>
+        <td><img src="{{ stock.photo.url }}" alt=""> {% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}</td>
+        <td>{{ stock.brand }}</td>
+        <td><a href="{% url 'rentalStockDetails' stock.id %}">{{ stock.model_name }}</a></td>
+        <td>{{ stock.charge_per_day }}</td>
+        {% if stock.isAvailable %}{% else %}[OUT OF STOCK]{% endif %}
+        <td>
+          <a href="{% url 'editRentalStock' stock.id %}"><i class="fas fa-edit"></i></a>
+        </td>
+        <td>
+          <a href="{% url 'deleteRentalStock' stock.id %}"><i class="fas fa-trash-alt"></i></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

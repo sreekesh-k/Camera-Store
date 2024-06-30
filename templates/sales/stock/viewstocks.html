@@ -40,13 +40,13 @@ Sales
           {% if not stock.isAvailable %}[OUT OF STOCK]{% endif %}
         </td>
         <td>{{ stock.brand }}</td>
-        <td><a href="{% url 'saleDetail' stock.id %}">{{ stock.model_name }}</a></td>
+        <td><a href="{% url 'salesStockDetails' stock.id %}">{{ stock.model_name }}</a></td>
         <td>{{ stock.MRP }}</td>
         <td>
-          <a href="{% url 'editSales' stock.id %}"><i class="fas fa-edit"></i></a>
+          <a href="{% url 'editSalesStock' stock.id %}"><i class="fas fa-edit"></i></a>
         </td>
         <td>
-          <a href="{% url 'deleteSales' stock.id %}"><i class="fas fa-trash-alt"></i></a>
+          <a href="{% url 'deleteSalesStock' stock.id %}"><i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>
       {% endfor %}

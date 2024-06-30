@@ -1,0 +1,14 @@
+.showbg{
+    background: url('cam.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+}
+.blur-bg{
+    backdrop-filter: blur(10px);
+    background:transparent;
+}
+.my-col{
+    color: white;
+}

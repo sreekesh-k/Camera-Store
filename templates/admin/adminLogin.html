@@ -1,14 +1,14 @@
-{% extends 'layout.html' %}
+{% extends 'layouts/admin/layout.html' %}
 {% block title %}
   ADMIN Login
 {% endblock %}
 {% block content %}
   <div class="login-box">
-    <div class="login-logo">
-      <b>Admin</b>LTE
+    <div class="login-logo my-col">
+      <b>CAMERA</b>store
     </div>
     <!-- /.login-logo -->
-    <div class="card">
+    <div class="card ">
       <div class="card-body login-card-body">
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
@@ -29,7 +29,7 @@
             </div>
           </div>
           <div class="row">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Log In</button>
           </div>
         </form>
       </div>

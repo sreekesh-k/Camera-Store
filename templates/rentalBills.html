@@ -1,8 +1,9 @@
 {% extends 'pageLayouts.html' %}
 {% block title %}
-  SalesBills
+SalesBills
 {% endblock %}
 {% block content %}
+<div class="container">
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -16,24 +17,25 @@
     </thead>
     <tbody>
       {% for bill in bills %}
-        <tr data-widget="expandable-table" aria-expanded="false">
-          <td>{{ bill.id }}</td>
-          <td>
-            <img src="{{ bill.camera.photo.url }}" alt="" height="110" width="155" />
-          </td>
-          <td>{{ bill.camera.brand }}</td>
-          <td>
-            <a href="{% url 'rentalDetail' bill.camera.id %}">{{ bill.camera.model_name }}</a>
-          </td>
-          <td>
-            {{ bill.customer_name }}
-            <br />Ph No:{{ bill.customer_phno }}
-          </td>
-          <td>
-            <a href="{% url 'deleteRentalBills' bill.id %}"><i class="fas fa-trash-alt"></i></a>
-          </td>
-        </tr>
+      <tr data-widget="expandable-table" aria-expanded="false">
+        <td>{{ bill.id }}</td>
+        <td>
+          <img src="{{ bill.camera.photo.url }}" alt="" height="110" width="155" />
+        </td>
+        <td>{{ bill.camera.brand }}</td>
+        <td>
+          <a href="{% url 'rentalDetail' bill.camera.id %}">{{ bill.camera.model_name }}</a>
+        </td>
+        <td>
+          {{ bill.customer_name }}
+          <br />Ph No:{{ bill.customer_phno }}
+        </td>
+        <td>
+          <a href="{% url 'deleteRentalBills' bill.id %}"><i class="fas fa-trash-alt"></i></a>
+        </td>
+      </tr>s
       {% endfor %}
     </tbody>
   </table>
+</div>
 {% endblock %}

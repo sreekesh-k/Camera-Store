@@ -5,9 +5,6 @@ from django.contrib.auth import authenticate, login as auth_login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages  # Import for displaying messages to the user
 
-def login(request):
-    return render(request, "login.html")
-
 def adminlogin(request):
     if request.user.is_authenticated:
         return redirect('admindash')
@@ -19,7 +16,7 @@ def adminlogin(request):
         # Check if either the username or password is empty
         if not username or not password:
             messages.error(request, "Both username and password are required.")
-            return render(request, "adminLogin.html", {'username': username})
+            return render(request, "admin/adminLogin.html", {'username': username})
 
         user = authenticate(username=username, password=password)  # Authenticate the user directly
         if user is not None and user.is_superuser:
@@ -27,9 +24,9 @@ def adminlogin(request):
             return redirect('admindash')
         else:
             messages.error(request, "Invalid username or password.")  # Display error message
-            return render(request, "adminLogin.html", {'username': username})  # Keep the username field populated
+            return render(request, "admin/adminLogin.html", {'username': username})  # Keep the username field populated
 
-    return render(request, "adminLogin.html")  # Handle GET request or other non-POST methods
+    return render(request, "admin/adminLogin.html")  # Handle GET request or other non-POST methods
 
 @login_required
 def admindash(request):
@@ -41,4 +38,4 @@ def admindash(request):
     
 def adminlogout(request):
     logout(request)
-    return redirect('login')
+    return redirect('adminlogin')

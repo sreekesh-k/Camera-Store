@@ -62,7 +62,7 @@ Sales
     searchInput.addEventListener('input', function() {
       const query = searchInput.value;
       
-      if (query.length > 2) {  // Start showing suggestions after 3 characters
+      if (query) {  // Start showing suggestions after 3 characters
         fetch(`/sales/search-suggestions/?term=${query}`)
           .then(response => response.json())
           .then(data => {

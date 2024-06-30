@@ -1,4 +1,4 @@
-{% extends 'pageLayouts.html' %}
+{% extends 'layouts/mainLayout.html' %}
 {% block title %}
 SalesBills
 {% endblock %}
@@ -24,14 +24,14 @@ SalesBills
         </td>
         <td>{{ bill.camera.brand }}</td>
         <td>
-          <a href="{% url 'rentalDetail' bill.camera.id %}">{{ bill.camera.model_name }}</a>
+          <a href="{% url 'rentalStockDetails' bill.camera.id %}">{{ bill.camera.model_name }}</a>
         </td>
         <td>
           {{ bill.customer_name }}
           <br />Ph No:{{ bill.customer_phno }}
         </td>
         <td>
-          <a href="{% url 'deleteRentalBills' bill.id %}"><i class="fas fa-trash-alt"></i></a>
+          <a href="{% url 'deleteRentalBill' bill.id %}"><i class="fas fa-trash-alt"></i></a>
         </td>
       </tr>s
       {% endfor %}

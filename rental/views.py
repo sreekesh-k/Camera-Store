@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from .models import RentCamera
 from django.contrib import messages
 #final
-def viewRentals(request):
+def viewStocks(request):
     pagehead = "Rentals"
     objects = RentCamera.objects.all()
-    return render(request, "viewRentals.html", {"stocks": objects, "pagehead": pagehead})
+    return render(request, "rental/stock/viewstocks.html", {"stocks": objects, "pagehead": pagehead})
 
-def addRentals(request):
+def addStock(request):
     if request.method == 'POST':
         brand = request.POST.get("brand")
         model_name = request.POST.get("model_name")
@@ -23,9 +23,9 @@ def addRentals(request):
         messages.success(request, 'Rental data added successfully!')
 
     pagehead = "Rentals / Add Rentals"
-    return render(request, "addRentals.html", {"pagehead": pagehead})
+    return render(request, "rental/stock/addstock.html", {"pagehead": pagehead})
 
-def editRentals(request, pk):
+def editStock(request, pk):
     stockToEdit = RentCamera.objects.get(pk=pk)
     if request.method == 'POST':
         brand = request.POST.get("brand")
@@ -43,20 +43,18 @@ def editRentals(request, pk):
             stockToEdit.photo = photo
         stockToEdit.save()
         messages.success(request, 'Rental data updated successfully!')
-        return redirect('viewRentals')
+        return redirect('viewRentalStocks')
 
     pagehead = "Rentals / Edit Rental"
-    return render(request, "EditRentals.html", {"stock": stockToEdit, "pagehead": pagehead})
+    return render(request, "rental/stock/editstock.html", {"stock": stockToEdit, "pagehead": pagehead})
 
-def deleteRentals(request, pk):
+def deleteStock(request, pk):
     itemToDelete = RentCamera.objects.get(pk=pk)
     itemToDelete.delete()
     messages.success(request, 'Rental data deleted successfully!')
-    pagehead = "Rentals"
-    objects = RentCamera.objects.all()
-    return render(request, "viewRentals.html", {"stocks": objects, "pagehead": pagehead})
+    return redirect('viewRentalStocks')
 
-def rentalDetail(request,pk):
+def stockDetails(request,pk):
     itemToDisplay = RentCamera.objects.get(pk=pk)
     pagehead = "Rentals / Details"
-    return render(request,"rentalStockDetail.html",{"stock":itemToDisplay,"pagehead":pagehead})
+    return render(request,"rental/stock/stockdetails.html",{"stock":itemToDisplay,"pagehead":pagehead})

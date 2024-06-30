@@ -3,6 +3,11 @@ from sales.models import SalesCamera
 from . models import SalesBilling
 from django.contrib import messages
 from django.http import JsonResponse
+import json
+
+def get_cameras(request):
+    cameras = list(SalesCamera.objects.all().values('id', 'brand', 'model_name'))
+    return JsonResponse(cameras, safe=False)
 # Create your views here.
 def customer(request,pk):
     if request.method == 'POST':
@@ -30,7 +35,7 @@ def viewSalesBills(request):
 
 def createSalesBills(request):
     pagehead = "Create Sales Bills"
-    return render(request,"sales/bills/createbill.html",{"pagehead":pagehead})
+    return render(request, "sales/bills/createbill.html", {"pagehead": pagehead})
 
 
 def deleteSalesBills(request,pk):

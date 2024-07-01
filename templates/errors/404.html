@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>opps</title>
-</head>
-<body>
-    <h1>Oops! Page not found.</h1>
-    <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.</p>
-    <a href="{% url 'adminlogin' %}">Return to Home Page</a>
-</body>
-</html>
+{% extends 'layouts/admin/layout.html' %}
+{% block title %}
+ADMIN Login
+{% endblock %}
+{% block content %}
+<div class="login-box">
+    <div class="login-logo my-col">
+        <b>CAMERA</b>store
+    </div>
+    <!-- /.login-logo -->
+    <div class="card ">
+        <h1>Oops! Page not found.</h1>
+        <p>The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        </p>
+        <a href="{% url 'adminlogin' %}">Return to Home Page</a>
+    </div>
+</div>
+<!-- /.login-box -->
+{% endblock %}

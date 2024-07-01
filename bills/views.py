@@ -3,7 +3,10 @@ from sales.models import SalesCamera
 from . models import SalesBilling
 from django.contrib import messages
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+@login_required
 def customer(request,pk):
     if request.method == 'POST':
         itemToDisplay = SalesCamera.objects.get(pk=pk)
@@ -23,16 +26,18 @@ def customer(request,pk):
     pagehead = "CustomerDetails"
     return render(request,"sales/bills/customerDetails.html",{"stock":itemToDisplay,"pagehead":pagehead})
 
+@login_required
 def viewSalesBills(request):
     pagehead = "SalesBills"
     object = SalesBilling.objects.all()
     return render(request,"sales/bills/viewbills.html",{"bills":object,"pagehead":pagehead})
 
+@login_required
 def createSalesBills(request):
     pagehead = "Create Sales Bills"
     return render(request,"sales/bills/createbill.html",{"pagehead":pagehead})
 
-
+@login_required
 def deleteSalesBills(request,pk):
     itemToDelete = SalesBilling.objects.get(pk=pk)
     camera = itemToDelete.camera

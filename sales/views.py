@@ -3,8 +3,10 @@ from django.http import JsonResponse
 from . models import SalesCamera 
 from django.contrib import messages
 from django.db.models import Q
-# Create your views here.
+from django.contrib.auth.decorators import login_required
 
+# Create your views here.
+@login_required
 def search_suggestions(request):
     query = request.GET.get('term', '')
     suggestions = []
@@ -19,6 +21,7 @@ def search_suggestions(request):
     
     return JsonResponse(suggestions, safe=False)
 
+@login_required
 def viewStocks(request):
     page_head = "Sales"
     query = request.GET.get('search')
@@ -34,6 +37,7 @@ def viewStocks(request):
     return render(request, "sales/stock/viewstocks.html", {"stocks": stocks, "pagehead": page_head})
 
 
+@login_required
 def addStock(request):
     if request.method == 'POST':
         # Extract form data from POST request
@@ -61,6 +65,7 @@ def addStock(request):
     pagehead = "Sales / Add Sales"
     return render(request, "sales/stock/addstock.html", {"pagehead": pagehead})
 
+@login_required
 def editStock(request,pk):
     stockToEdit = SalesCamera.objects.get(pk=pk)
     if request.method == 'POST':
@@ -92,6 +97,7 @@ def editStock(request,pk):
     pagehead = "Sales / Edit Stock"
     return render(request, "sales/stock/editstock.html", {"stock":stockToEdit,"pagehead": pagehead})
 
+@login_required
 def deleteStock(request,pk):
     itemToDelete = SalesCamera.objects.get(pk=pk)
     itemToDelete.delete()
@@ -99,6 +105,7 @@ def deleteStock(request,pk):
     object = SalesCamera.objects.all()
     return render(request,"sales/stock/viewstock.html",{"stocks":object,"pagehead":pagehead})
 
+@login_required
 def stockDetails(request,pk):
     itemToDisplay = SalesCamera.objects.get(pk=pk)
     pagehead = "Sales / Details"

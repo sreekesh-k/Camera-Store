@@ -2,7 +2,10 @@ from django.shortcuts import redirect, render
 from rental.models import RentCamera
 from .models import RentalBilling
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
+@login_required
 def rentcustomer(request, pk):
     if request.method == 'POST':
         itemToDisplay = RentCamera.objects.get(pk=pk)
@@ -26,15 +29,18 @@ def rentcustomer(request, pk):
     pagehead = "CustomerRentals"
     return render(request, "rental/bills/customerDetails.html", {"stock": itemToDisplay, "pagehead": pagehead})
 
+@login_required
 def viewRentalBills(request):
     pagehead = "Rentalbills"
     object = RentalBilling.objects.all()
     return render(request, "rental/bills/viewbills.html", {"bills": object, "pagehead": pagehead})
 
+@login_required
 def createRentalBills(request):
     pagehead = "Create Rental Bills"
     return render(request,"rental/bills/createbill.html",{"pagehead":pagehead})
 
+@login_required
 def deleteRentalBill(request, pk):
     itemToDelete = RentalBilling.objects.get(pk=pk)
     camera = itemToDelete.camera

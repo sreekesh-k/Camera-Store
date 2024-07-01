@@ -1,12 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import RentCamera
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
 #final
+
+@login_required
 def viewStocks(request):
     pagehead = "Rentals"
     objects = RentCamera.objects.all()
     return render(request, "rental/stock/viewstocks.html", {"stocks": objects, "pagehead": pagehead})
 
+@login_required
 def addStock(request):
     if request.method == 'POST':
         brand = request.POST.get("brand")
@@ -25,6 +30,7 @@ def addStock(request):
     pagehead = "Rentals / Add Rentals"
     return render(request, "rental/stock/addstock.html", {"pagehead": pagehead})
 
+@login_required
 def editStock(request, pk):
     stockToEdit = RentCamera.objects.get(pk=pk)
     if request.method == 'POST':
@@ -48,12 +54,14 @@ def editStock(request, pk):
     pagehead = "Rentals / Edit Rental"
     return render(request, "rental/stock/editstock.html", {"stock": stockToEdit, "pagehead": pagehead})
 
+@login_required
 def deleteStock(request, pk):
     itemToDelete = RentCamera.objects.get(pk=pk)
     itemToDelete.delete()
     messages.success(request, 'Rental data deleted successfully!')
     return redirect('viewRentalStocks')
 
+@login_required
 def stockDetails(request,pk):
     itemToDisplay = RentCamera.objects.get(pk=pk)
     pagehead = "Rentals / Details"

@@ -101,9 +101,7 @@ def editStock(request,pk):
 def deleteStock(request,pk):
     itemToDelete = SalesCamera.objects.get(pk=pk)
     itemToDelete.delete()
-    pagehead = "Sales"
-    object = SalesCamera.objects.all()
-    return render(request,"sales/stock/viewstocks.html",{"stocks":object,"pagehead":pagehead})
+    return redirect('viewSales')
 
 @login_required
 def stockDetails(request,pk):

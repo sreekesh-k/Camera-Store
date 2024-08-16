@@ -103,7 +103,7 @@ def deleteStock(request,pk):
     itemToDelete.delete()
     pagehead = "Sales"
     object = SalesCamera.objects.all()
-    return render(request,"sales/stock/viewstock.html",{"stocks":object,"pagehead":pagehead})
+    return render(request,"sales/stock/viewstocks.html",{"stocks":object,"pagehead":pagehead})
 
 @login_required
 def stockDetails(request,pk):

@@ -8,7 +8,8 @@ Sales
     <div class="col-md-4 position-relative">
       <form method="get">
         <div class="input-group">
-          <input type="search" class="form-control form-control-lg" placeholder="Search" name="search" id="search-input">
+          <input type="search" class="form-control form-control-lg" placeholder="Search" name="search"
+            id="search-input">
           <div class="input-group-append">
             <button type="submit" class="btn btn-lg btn-default">
               <i class="fa fa-search"></i>
@@ -33,7 +34,8 @@ Sales
     </thead>
     <tbody>
       {% for stock in stocks %}
-      <tr data-widget="expandable-table" aria-expanded="false" class="{% if stock.isAvailable %}{% else %}bg-secondary{% endif %}">
+      <tr data-widget="expandable-table" aria-expanded="false"
+        class="{% if stock.isAvailable %}{% else %}bg-secondary{% endif %}">
         <td>{{ stock.id }}</td>
         <td>
           <img src="{{ stock.photo.url }}" alt="" height="110" width="155">
@@ -46,7 +48,12 @@ Sales
           <a href="{% url 'editSalesStock' stock.id %}"><i class="fas fa-edit"></i></a>
         </td>
         <td>
-          <a href="{% url 'deleteSalesStock' stock.id %}"><i class="fas fa-trash-alt"></i></a>
+          <form action="{% url 'deleteSalesStock' stock.id %}" method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-link" style="border:none; padding:0;">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+          </form>
         </td>
       </tr>
       {% endfor %}

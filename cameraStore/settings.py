@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from decouple import Config, Csv
 from pathlib import Path
 import os
 import cloudinary
@@ -23,13 +23,13 @@ MEDIA_ROOT = ''
 # Set the MEDIA_URL to '/media/' so that uploaded files are served from this URL
 MEDIA_URL = 'images/'
 
+config = Config(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-f+2%n+zo7cj==fc*j#m04_0)okwblx-a=xgyjty#(#a=&+6iri'
-
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'cameraStore.wsgi.application'
 #postgres
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD':'XoAANFonXbaBbInWHgVaZGQUeuQDKNGM',
-        'HOST':'monorail.proxy.rlwy.net',
-        'PORT':'59122'
+        'ENGINE': config('DB_ENGINE'),
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
@@ -149,10 +149,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dgocvw8ye',
-    'API_KEY': '332325572752998',
-    'API_SECRET': 'nl35rMWiO-wFxA2xEdAdFuTnHg8',
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
-
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
